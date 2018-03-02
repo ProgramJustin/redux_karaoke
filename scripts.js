@@ -6,7 +6,14 @@ const initialState = {
   songLyricsArray: songLyricsArray,
   arrayPosition: 0,
 }
-// JEST TESTS + SETUP
+
+// REDUCER
+const reducer = (state = initialState, action) => {
+  return state;
+}
+
+// JEST TESTS + SETUP, JEST USES THE EXPECT LIBRARY
+// Expect library as a object belonging to window. Unique, huh!? But this is only when using the CDN. We won't need to do this when we later install Jest through npm.
 const { expect } = window;
 
 expect(reducer(initialState, { type: null})).toEqual(initialState);
