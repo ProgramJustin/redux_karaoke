@@ -7,6 +7,11 @@ const initialState = {
   arrayPosition: 0,
 }
 
+//REDUX STORE
+const { createStore } = Redux;
+const store = createStore(reducer);
+console.log(store.getState());
+
 // CLICK LISTENER
 const userClick = () => {
   console.log('clicked');
