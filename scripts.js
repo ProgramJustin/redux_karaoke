@@ -18,6 +18,12 @@ const { expect } = window;
 
 expect(reducer(initialState, { type: null})).toEqual(initialState);
 
+// testing that our reducer has a NEXT_LYRIC action type that can advance the arrayPosition slice of our state
+expect(reducer(initialState, { type: 'NEXT_LYRIC'})).toEqual({
+  songLyricsArray: songLyricsArray,
+  arrayPosition: 1
+});
+
 //REDUX STORE
 const { createStore } = Redux;
 const store = createStore(reducer);
