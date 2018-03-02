@@ -6,6 +6,10 @@ const initialState = {
   songLyricsArray: songLyricsArray,
   arrayPosition: 0,
 }
+// JEST TESTS + SETUP
+const { expect } = window;
+
+expect(reducer(initialState, { type: null})).toEqual(initialState);
 
 //REDUX STORE
 const { createStore } = Redux;
