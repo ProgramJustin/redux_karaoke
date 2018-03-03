@@ -45,6 +45,7 @@ const renderLyrics = () => {
     lyricsDisplay.removeChild(lyricsDisplay.firstChild);
   }
   const currentLine = store.getState().songLyricsArray[store.getState().arrayPosition];
+  const renderLine = document.createTextNode(currentLine);
 }
 
 
