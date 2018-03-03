@@ -41,6 +41,9 @@ const store = createStore(reducer);
 // RENDERING STATE IN DOM
 const renderLyrics = () => {
   const lyricsDisplay = document.getElementById('lyrics');
+  while(lyricsDisplay.firstChild) {
+    lyricsDisplay.removeChild(lyricsDisplay.firstChild);
+  }
 }
 
 
