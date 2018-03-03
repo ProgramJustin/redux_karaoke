@@ -46,6 +46,7 @@ const renderLyrics = () => {
   }
   const currentLine = store.getState().songLyricsArray[store.getState().arrayPosition];
   const renderLine = document.createTextNode(currentLine);
+  document.getElementById('lyrics').appendChild(renderLine);
 }
 
 
