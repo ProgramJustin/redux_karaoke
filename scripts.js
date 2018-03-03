@@ -44,6 +44,7 @@ const renderLyrics = () => {
   while(lyricsDisplay.firstChild) {
     lyricsDisplay.removeChild(lyricsDisplay.firstChild);
   }
+  const currentLine = store.getState().songLyricsArray[store.getState().arrayPosition];
 }
 
 
