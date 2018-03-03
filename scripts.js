@@ -49,7 +49,7 @@ const renderLyrics = () => {
   document.getElementById('lyrics').appendChild(renderLine);
 }
 
-window.onLoad = function() {
+window.onload = function() {
   renderLyrics();
 }
 
@@ -58,3 +58,6 @@ const userClick = () => {
   store.dispatch({ type: 'NEXT_LYRIC'} );
   console.log(store.getState());
 }
+
+// SUBSCRIBE TO REDUX STORE
+store.subscribe(renderLyrics);
