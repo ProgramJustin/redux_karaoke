@@ -49,7 +49,9 @@ const renderLyrics = () => {
   document.getElementById('lyrics').appendChild(renderLine);
 }
 
-
+window.onLoad = function() {
+  renderLyrics();
+}
 
 // CLICK LISTENER
 const userClick = () => {
