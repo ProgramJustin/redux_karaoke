@@ -34,6 +34,13 @@ expect(reducer(initialState, {type: 'NEXT_LYRIC'})).toEqual({
   arrayPosition: 1
 });
 
+expect(reducer({
+    songLyricsArray: songLyricsArray,
+    arrayPosition: 1,
+  },
+  { type: 'RESTART_SONG' })
+).toEqual(initialState);
+
 //REDUX STORE, SINGLE SOURCE OF TRUTH
 const { createStore } = Redux;
 const store = createStore(reducer);
