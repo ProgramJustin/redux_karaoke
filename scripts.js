@@ -24,7 +24,7 @@ const initialState = {
 
 // REDUX REDUCER, REDUCER UPDATES STATE
 // advances our song lyrics, including restarting at the first lyric when the song concludes
-const lyricChangeReducer = (state = initialState, action) => {
+const lyricChangeReducer = (state = initialState.songsById, action) => {
   // console.log(initialState);
   let newState;
   switch (action.type) {
