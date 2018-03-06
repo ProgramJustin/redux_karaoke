@@ -11,7 +11,7 @@ const initialState = {
       songId: 1,
       songArray: songList[1],
       arrayPosition: 0,
-    }
+    },
     2: {
       title: "DNA",
       artist: "Kendrick Lamar",
@@ -50,16 +50,38 @@ const { expect } = window;
 expect(lyricChangeReducer(initialState.songsById, { type: null})).toEqual(initialStat.songsById);
 
 expect(lyricChangeReducer(initialState.songsById, {type: 'NEXT_LYRIC'})).toEqual({
-  songLyricsArray: songLyricsArray,
-  arrayPosition: 1
+  1: {
+    title: "Congratulations",
+    artist: "Post Malone featuring Quavo",
+    songId: 1,
+    songArray: songList[1],
+    arrayPosition: 0,
+  },
+  2: {
+    title: "DNA",
+    artist: "Kendrick Lamar",
+    songId: 2,
+    songArray: songList[2],
+    arrayPosition: 0,
+  }
 });
 
-expect(lyricChangeReducer({
-    songLyricsArray: songLyricsArray,
-    arrayPosition: 1,
+expect(lyricChangeReducer(initialStat.songsById, { type: 'RESTART_SONG' })).toEqual({
+  1: {
+    title: "Congratulations",
+    artist: "Post Malone featuring Quavo",
+    songId: 1,
+    songArray: songList[1],
+    arrayPosition: 0,
   },
-  { type: 'RESTART_SONG' })
-).toEqual(initialState.songsById);
+  2: {
+    title: "DNA",
+    artist: "Kendrick Lamar",
+    songId: 2,
+    songArray: songList[2],
+    arrayPosition: 0,
+  }
+});
 
 //REDUX STORE, SINGLE SOURCE OF TRUTH
 const { createStore } = Redux;
