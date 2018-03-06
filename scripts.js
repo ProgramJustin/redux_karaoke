@@ -47,9 +47,9 @@ const lyricChangeReducer = (state = initialState.songsById, action) => {
 const { expect } = window;
 
 // RUN TEST
-expect(lyricChangeReducer(initialState, { type: null})).toEqual(initialState);
+expect(lyricChangeReducer(initialState.songsById, { type: null})).toEqual(initialStat.songsById);
 
-expect(lyricChangeReducer(initialState, {type: 'NEXT_LYRIC'})).toEqual({
+expect(lyricChangeReducer(initialState.songsById, {type: 'NEXT_LYRIC'})).toEqual({
   songLyricsArray: songLyricsArray,
   arrayPosition: 1
 });
@@ -59,7 +59,7 @@ expect(lyricChangeReducer({
     arrayPosition: 1,
   },
   { type: 'RESTART_SONG' })
-).toEqual(initialState);
+).toEqual(initialState.songsById);
 
 //REDUX STORE, SINGLE SOURCE OF TRUTH
 const { createStore } = Redux;
