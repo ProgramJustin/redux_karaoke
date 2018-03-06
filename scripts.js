@@ -3,8 +3,23 @@ const songLyricsArray = "My mama called, seen you on TV, son Said shit done chan
 
 // INITIAL REDUX STATE, SINGLE SOURCE OF TRUTH
 const initialState = {
-  songLyricsArray: songLyricsArray,
-  arrayPosition: 0,
+  currentSongId: null,
+  songsById: {
+    1: {
+      title: "Congratulations",
+      artist: "Post Malone featuring Quavo",
+      songId: 1,
+      songArray: songList[1],
+      arrayPosition: 0,
+    }
+    2: {
+      title: "DNA",
+      artist: "Kendrick Lamar",
+      songId: 2,
+      songArray: songList[2],
+      arrayPosition: 0,
+    }
+  }
 }
 
 // REDUX REDUCER, REDUCER UPDATES STATE
@@ -67,7 +82,7 @@ window.onload = function() {
 // CLICK LISTENER
 const userClick = () => {
   const currentState = store.getState();
-  if (currentState.arrayPosition === currentState.songLyricsArray.length -1) {
+  if (currentState.arrayPosition === currentState.songLyricsArray.length - 1) {
     store.dispatch({ type: 'RESTART_SONG' } );
   } else {
     store.dispatch({ type: 'NEXT_LYRIC' } );
