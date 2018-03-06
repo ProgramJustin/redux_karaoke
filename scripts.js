@@ -47,14 +47,14 @@ const lyricChangeReducer = (state = initialState, action) => {
 const { expect } = window;
 
 // RUN TEST
-expect(reducer(initialState, { type: null})).toEqual(initialState);
+expect(lyricChangeReducer(initialState, { type: null})).toEqual(initialState);
 
-expect(reducer(initialState, {type: 'NEXT_LYRIC'})).toEqual({
+expect(lyricChangeReducer(initialState, {type: 'NEXT_LYRIC'})).toEqual({
   songLyricsArray: songLyricsArray,
   arrayPosition: 1
 });
 
-expect(reducer({
+expect(lyricChangeReducer({
     songLyricsArray: songLyricsArray,
     arrayPosition: 1,
   },
