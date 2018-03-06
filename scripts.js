@@ -23,7 +23,8 @@ const initialState = {
 }
 
 // REDUX REDUCER, REDUCER UPDATES STATE
-const reducer = (state = initialState, action) => {
+// advances our song lyrics, including restarting at the first lyric when the song concludes
+const lyricChangeReducer = (state = initialState, action) => {
   // console.log(initialState);
   let newState;
   switch (action.type) {
@@ -62,7 +63,7 @@ expect(reducer({
 
 //REDUX STORE, SINGLE SOURCE OF TRUTH
 const { createStore } = Redux;
-const store = createStore(reducer);
+const store = createStore(lyricChangeReducer);
 
 // RENDERING STATE IN DOM
 const renderLyrics = () => {
