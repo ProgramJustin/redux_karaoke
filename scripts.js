@@ -41,10 +41,12 @@ const lyricChangeReducer = (state = initialState.songsById, action) => {
     // Locates the arrayPosition of the song whose ID was provided in the action's payload, and increments it by one:
     newArrayPosition = state[action.currentSongId].arrayPosition + 1;
 
-    newState = {
-      songLyricsArray: state.songLyricsArray,
-      arrayPosition: newArrayPosition,
-    }
+    // Creates a copy of that song's entry in the songsById state slice,
+    // and adds the updated newArrayPosition value we just calculated as its arrayPosition:
+    newSongsByIdEntry = Object.assign({}, state[action.currentSongId], {
+      arrayPosition: newArrayPosition
+    })
+
     return newState;
   case 'RESTART_SONG':
     newState = initialState;
