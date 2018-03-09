@@ -31,7 +31,10 @@ const initialState = {
 // advances our song lyrics, including restarting at the first lyric when the song concludes
 const lyricChangeReducer = (state = initialState.songsById, action) => {
   // console.log(initialState);
-  let newState;
+  // Declares several variables used below, without yet defining.
+  let newArrayPosition;
+  let newSongsByIdEntry;
+  let newSongsByIdStateSlice;
   switch (action.type) {
     case 'NEXT_LYRIC':
     let newArrayPosition = state.arrayPosition + 1;
@@ -52,7 +55,7 @@ const lyricChangeReducer = (state = initialState.songsById, action) => {
 const { expect } = window;
 
 // RUN TEST
-expect(lyricChangeReducer(initialState.songsById, { type: null})).toEqual(initialStat.songsById);
+expect(lyricChangeReducer(initialState.songsById, { type: null})).toEqual(initialState.songsById);
 
 expect(lyricChangeReducer(initialState.songsById, {type: 'NEXT_LYRIC', currentSongId: 2})).toEqual({
   1: {
