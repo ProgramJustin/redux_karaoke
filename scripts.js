@@ -47,6 +47,12 @@ const lyricChangeReducer = (state = initialState.songsById, action) => {
       arrayPosition: newArrayPosition
     })
 
+    // Creates a copy of the entire songsById state slice, and adds the
+    // updated newSongsById state entry we just created to this new copy:
+    newSongsByIdStateSlice = Object.assign({}, state, {
+      [action.currentSongId]: newSongsByIdEntry
+    });
+
     return newState;
   case 'RESTART_SONG':
     newState = initialState;
