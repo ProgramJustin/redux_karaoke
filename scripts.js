@@ -53,7 +53,10 @@ const lyricChangeReducer = (state = initialState.songsById, action) => {
       [action.currentSongId]: newSongsByIdEntry
     });
 
-    return newState;
+    // Returns the entire newSongsByIdStateSlice we just constructed, which will
+    // update state in our Redux store to match this returned value:
+    return newSongsByIdStateSlice;
+
   case 'RESTART_SONG':
     newState = initialState;
     return newState;
