@@ -49,7 +49,7 @@ const { expect } = window;
 // RUN TEST
 expect(lyricChangeReducer(initialState.songsById, { type: null})).toEqual(initialStat.songsById);
 
-expect(lyricChangeReducer(initialState.songsById, {type: 'NEXT_LYRIC'})).toEqual({
+expect(lyricChangeReducer(initialState.songsById, {type: 'NEXT_LYRIC', currentSongId: 2})).toEqual({
   1: {
     title: "Congratulations",
     artist: "Post Malone featuring Quavo",
@@ -66,7 +66,7 @@ expect(lyricChangeReducer(initialState.songsById, {type: 'NEXT_LYRIC'})).toEqual
   }
 });
 
-expect(lyricChangeReducer(initialState.songsById, { type: 'RESTART_SONG' })).toEqual({
+expect(lyricChangeReducer(initialState.songsById, { type: 'RESTART_SONG', currentSongId: 1 })).toEqual({
   1: {
     title: "Congratulations",
     artist: "Post Malone featuring Quavo",
