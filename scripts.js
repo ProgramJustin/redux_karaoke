@@ -62,11 +62,11 @@ expect(lyricChangeReducer(initialState.songsById, {type: 'NEXT_LYRIC'})).toEqual
     artist: "Kendrick Lamar",
     songId: 2,
     songArray: songList[2],
-    arrayPosition: 0,
+    arrayPosition: 1,
   }
 });
 
-expect(lyricChangeReducer(initialStat.songsById, { type: 'RESTART_SONG' })).toEqual({
+expect(lyricChangeReducer(initialState.songsById, { type: 'RESTART_SONG' })).toEqual({
   1: {
     title: "Congratulations",
     artist: "Post Malone featuring Quavo",
