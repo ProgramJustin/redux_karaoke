@@ -199,6 +199,7 @@ const renderSongs = () => {
 
 window.onload = function() {
   renderLyrics();
+  renderLyrics();
 }
 
 // CLICK LISTENER
