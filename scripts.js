@@ -143,30 +143,73 @@ const { createStore } = Redux;
 const store = createStore(lyricChangeReducer);
 
 // RENDERING STATE IN DOM
-// const renderLyrics = () => {
-//   const lyricsDisplay = document.getElementById('lyrics');
-//   while(lyricsDisplay.firstChild) {
-//     lyricsDisplay.removeChild(lyricsDisplay.firstChild);
-//   }
-//
-//   const currentLine = store.getState().songLyricsArray[store.getState().arrayPosition];
-//   const renderLine = document.createTextNode(currentLine);
-//   document.getElementById('lyrics').appendChild(renderLine);
-// }
-//
-// window.onload = function() {
-//   renderLyrics();
-// }
-//
-// // CLICK LISTENER
-// const userClick = () => {
-//   const currentState = store.getState();
-//   if (currentState.arrayPosition === currentState.songLyricsArray.length - 1) {
-//     store.dispatch({ type: 'RESTART_SONG' } );
-//   } else {
-//     store.dispatch({ type: 'NEXT_LYRIC' } );
-//   }
-// }
-//
-// // SUBSCRIBE TO REDUX STORE
-// store.subscribe(renderLyrics);
+const renderLyrics = () => {
+  const lyricsDisplay = document.getElementById('lyrics');
+  while(lyricsDisplay.firstChild) {
+    lyricsDisplay.removeChild(lyricsDisplay.firstChild);
+  }
+
+  const currentLine = store.getState().songLyricsArray[store.getState().arrayPosition];
+  const renderLine = document.createTextNode(currentLine);
+  document.getElementById('lyrics').appendChild(renderLine);
+}
+
+const renderSongs = () => {
+  // Retrieves songsById state slice from store:
+  const songsById = store.getState().songsById;
+
+  // Cycles through each key in songsById
+  for (const songKey in songsById) {
+
+    // Locates song corresponding with each key, saves as 'song' constant:
+    const song = songsById[songKey];
+
+    // Creates <li>, <h3>, and <em> HTML elements to render this song's information in the DOM:
+    const li = document.createElement('li');
+    const h3 = document.createElement('h3');
+    const em = document.createElement('em');
+
+    // Creates text node containing each song's title:
+    const songTitle = document.createTextNode(song.title);
+
+    // Creates text node containing each song's artist:
+    const songArtist = document.createTextNode( ' by ' + song.artist);
+
+    // Adds songTitle text node to the <em> element\:
+    em.appendChild(songTitle);
+
+    // Adds <em> element that now contains song title to the <h3> element
+    h3.appendChild(em);
+
+    // Also adds songArtist text node to <h3>
+    h3.appendChild(songArtist);
+
+    // Adds click event listener to same <h3>, when this <h3> is clicked, an event handler called selectedSong() will run, using song's ID as argument:
+    h3.addEventListener('click', function() {
+      selectedSong(song.songId);
+    });
+
+    // Adds entire <h3> element to the <li> element
+    li.appendChild(h3);
+
+    // Appends <li> element to the <ul> element in the index.html with 'songs' ID:
+    document.getElementById('songs').appendChild(li);
+  }
+}
+
+window.onload = function() {
+  renderLyrics();
+}
+
+// CLICK LISTENER
+const userClick = () => {
+  const currentState = store.getState();
+  if (currentState.arrayPosition === currentState.songLyricsArray.length - 1) {
+    store.dispatch({ type: 'RESTART_SONG' } );
+  } else {
+    store.dispatch({ type: 'NEXT_LYRIC' } );
+  }
+}
+
+// SUBSCRIBE TO REDUX STORE
+store.subscribe(renderLyrics);
