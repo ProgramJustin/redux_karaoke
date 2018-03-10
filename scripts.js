@@ -84,6 +84,10 @@ const lyricChangeReducer = (state = initialState.songsById, action) => {
   }
 }
 
+const songChangeReducer = (state = initialState.currentSongId, action) => {
+  return state;
+}
+
 // JEST TESTS + SETUP, JEST USES THE EXPECT LIBRARY
 const { expect } = window;
 
