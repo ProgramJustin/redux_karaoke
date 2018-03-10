@@ -84,8 +84,15 @@ const lyricChangeReducer = (state = initialState.songsById, action) => {
   }
 }
 
+// REDUCER
+
 const songChangeReducer = (state = initialState.currentSongId, action) => {
-  return state;
+  switch (action.type){
+    case 'CHANGE_SONG':
+      return action.newSelectedSongId
+    default:
+      return state;
+  }
 }
 
 // JEST TESTS + SETUP, JEST USES THE EXPECT LIBRARY
