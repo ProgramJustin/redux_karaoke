@@ -138,6 +138,8 @@ expect(songChangeReducer(initialState, { type: null })).toEqual(initialState);
 
 expect(songChangeReducer(initialState.currentSongId, { type: 'CHANGE_SONG', newSelectedSongId: 1 })).toEqual(1);
 
+expect(rootReducer(initialState, { type: null })).toEqual(initialState);
+
 //REDUX STORE, SINGLE SOURCE OF TRUTH
 const { createStore } = Redux;
 const store = createStore(lyricChangeReducer);
@@ -148,10 +150,13 @@ const renderLyrics = () => {
   while(lyricsDisplay.firstChild) {
     lyricsDisplay.removeChild(lyricsDisplay.firstChild);
   }
-
+  // If currentSongId is not null we look at the entry in the songsById state slice with currentSongId as its key
   if (store.getState().currentSongId) {
+    From songArray, we retrieve the specific lyric that is at the location of arrayPosition.
+  // We create a text node from this lyric using document.createTextNode(), and append it to the lyrics area of our DOM.
     const currentLine = document.createTextNode(store.getState().songsById[store.getState().currentSongId].songArray[store.getState().songsById[store.getState().currentSongId].arrayPosition]);
     document.getElementById('lyrics').appendChild(currentLine);
+    // If currentSongId is null (remember, we set it to null in our initialState), we display a message instructing users to select a song.
   } else {
     const selectSongMessage = document.createTextNode("select a song from the menu above to sing along!");
     document.getElementById('lyrics').appendChild(selectSongMessage);
@@ -159,6 +164,8 @@ const renderLyrics = () => {
 }
 
 const renderSongs = () => {
+  console.log('renderSongs method successfully fired!');
+  console.log(store.getState());
   // Retrieves songsById state slice from store:
   const songsById = store.getState().songsById;
 
