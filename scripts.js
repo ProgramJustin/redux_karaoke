@@ -203,7 +203,7 @@ const renderSongs = () => {
 
     // Adds click event listener to same <h3>, when this <h3> is clicked, an event handler called selectedSong() will run, using song's ID as argument:
     h3.addEventListener('click', function() {
-      selectedSong(song.songId);
+      selectSong(song.songId);
     });
 
     // Adds entire <h3> element to the <li> element
