@@ -83,8 +83,6 @@ const lyricChangeReducer = (state = initialState.songsById, action) => {
   }
 }
 
-// REDUCER
-
 const songChangeReducer = (state = initialState.currentSongId, action) => {
   switch (action.type){
     case 'CHANGE_SONG':
@@ -93,6 +91,12 @@ const songChangeReducer = (state = initialState.currentSongId, action) => {
       return state;
   }
 }
+
+const rootReducer = this.Redux.combineReducers({
+  currentSongId: songChangeReducer,
+  songsById: lyricChangeReducer
+});
+
 //REDUX STORE, SINGLE SOURCE OF TRUTH
 const { createStore } = Redux;
 const store = createStore(lyricChangeReducer);
@@ -144,7 +148,7 @@ expect(songChangeReducer(initialState.currentSongId, { type: 'CHANGE_SONG', newS
 expect(rootReducer(initialState, { type: null })).toEqual(initialState);
 
 expect(store.getState().currentSongId).toEqual(songChangeReducer(undefined, { type: null }));
-expect(store.getState().songsById).toEqual(lyricChangeReducer(undefined. { type: null }));
+expect(store.getState().songsById).toEqual(lyricChangeReducer(undefined, { type: null }));
 
 // RENDERING STATE IN DOM
 const renderLyrics = () => {
@@ -154,7 +158,7 @@ const renderLyrics = () => {
   }
   // If currentSongId is not null we look at the entry in the songsById state slice with currentSongId as its key
   if (store.getState().currentSongId) {
-    From songArray, we retrieve the specific lyric that is at the location of arrayPosition.
+  //  From songArray, we retrieve the specific lyric that is at the location of arrayPosition.
   // We create a text node from this lyric using document.createTextNode(), and append it to the lyrics area of our DOM.
     const currentLine = document.createTextNode(store.getState().songsById[store.getState().currentSongId].songArray[store.getState().songsById[store.getState().currentSongId].arrayPosition]);
     document.getElementById('lyrics').appendChild(currentLine);
