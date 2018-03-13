@@ -99,7 +99,7 @@ const rootReducer = this.Redux.combineReducers({
 
 //REDUX STORE, SINGLE SOURCE OF TRUTH
 const { createStore } = Redux;
-const store = createStore(lyricChangeReducer);
+const store = createStore(rootReducer);
 
 // JEST TESTS + SETUP, JEST USES THE EXPECT LIBRARY
 const { expect } = window;
