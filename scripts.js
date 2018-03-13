@@ -2,7 +2,7 @@
 
 const songList = {
   1: "My mama called, seen you on TV, son Said shit done changed ever since we was on I dreamed it all ever since I was young They said I wouldn't be nothing Now they always say congratulations Worked so hard, forgot how to vacation They ain't never had the dedication People hatin', say we changed and look we made it Yeah, we made it".split(', '),
-  2: "I got, I got, I got, I got Loyalty, got royalty inside my DNA Cocaine quarter piece, got war and peace inside my DNA I got power, poison, pain and joy inside my DNA I got hustle though, ambition, flow, inside my DNA I was born like this, since one like this Immaculate conception I transform like this, perform like this Was Yeshua's new weapon I don’t contemplate, I meditate, then off your fucking head This that put-the-kids-to-bed This that I got, I got, I got, I got Realness, I just kill shit 'cause it's in my DNA I got millions, I got riches buildin’ in my DNA I got dark, I got evil, that rot inside my DNA"
+  2: "I got, I got, I got, I got Loyalty, got royalty inside my DNA Cocaine quarter piece, got war and peace inside my DNA I got power, poison, pain and joy inside my DNA I got hustle though, ambition, flow, inside my DNA I was born like this, since one like this Immaculate conception I transform like this, perform like this Was Yeshua's new weapon I don’t contemplate, I meditate, then off your fucking head This that put-the-kids-to-bed This that I got, I got, I got, I got Realness, I just kill shit 'cause it's in my DNA I got millions, I got riches buildin’ in my DNA I got dark, I got evil, that rot inside my DNA".split(', ')
 }
 
 // INITIAL REDUX STATE, SINGLE SOURCE OF TRUTH
