@@ -93,6 +93,9 @@ const songChangeReducer = (state = initialState.currentSongId, action) => {
       return state;
   }
 }
+//REDUX STORE, SINGLE SOURCE OF TRUTH
+const { createStore } = Redux;
+const store = createStore(lyricChangeReducer);
 
 // JEST TESTS + SETUP, JEST USES THE EXPECT LIBRARY
 const { expect } = window;
@@ -142,10 +145,6 @@ expect(rootReducer(initialState, { type: null })).toEqual(initialState);
 
 expect(store.getState().currentSongId).toEqual(songChangeReducer(undefined, { type: null }));
 expect(store.getState().songsById).toEqual(lyricChangeReducer(undefined. { type: null }));
-
-//REDUX STORE, SINGLE SOURCE OF TRUTH
-const { createStore } = Redux;
-const store = createStore(lyricChangeReducer);
 
 // RENDERING STATE IN DOM
 const renderLyrics = () => {
