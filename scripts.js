@@ -228,6 +228,13 @@ const userClick = () => {
     store.dispatch({ type: 'NEXT_LYRIC' } );
   }
 }
+const selectSong = (newSongId) => {
+  let action = {
+    type: 'CHANGE_SONG',
+    newSelectedSongId: newSongId
+  }
+  store.dispatch(action);
+}
 
 // SUBSCRIBE TO REDUX STORE
 store.subscribe(renderLyrics);
