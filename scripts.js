@@ -231,7 +231,15 @@ const userClick = () => {
 }
 
 const selectSong = (newSongId) => {
-  let action = {
+  let action;
+  if (store.getState().currentSongId) {
+    action = {
+      type: 'RESTART_SONG',
+      currentSongId: store.getState().currentSongId
+    }
+    store.dispatch(action);
+  }
+  action = {
     type: 'CHANGE_SONG',
     newSelectedSongId: newSongId
   }
