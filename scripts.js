@@ -140,6 +140,9 @@ expect(songChangeReducer(initialState.currentSongId, { type: 'CHANGE_SONG', newS
 
 expect(rootReducer(initialState, { type: null })).toEqual(initialState);
 
+expect(store.getState().currentSongId).toEqual(songChangeReducer(undefined, { type: null }));
+expect(store.getState().songsById).toEqual(lyricChangeReducer(undefined. { type: null }));
+
 //REDUX STORE, SINGLE SOURCE OF TRUTH
 const { createStore } = Redux;
 const store = createStore(lyricChangeReducer);
