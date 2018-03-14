@@ -61,6 +61,8 @@ const lyricChangeReducer = (state = initialState.songsById, action) => {
     // Creates a copy of the song entry in songsById state slice whose ID matches
     // the currentSongId included with the action, sets the copy's arrayPosition value
     // to 0:}
+    console.log('Restarted');
+    // console.log(state);
 
     newSongsByIdEntry = Object.assign({}, state[action.currentSongId], {
       arrayPosition: 0
@@ -170,8 +172,6 @@ const renderLyrics = () => {
 }
 
 const renderSongs = () => {
-  console.log('renderSongs method successfully fired!');
-  console.log(store.getState());
   // Retrieves songsById state slice from store:
   const songsById = store.getState().songsById;
 
@@ -221,7 +221,7 @@ window.onload = function() {
 
 // CLICK LISTENER
 const userClick = () => {
-  if (store.getState().songsById[store.getState().currentSongId].arrayPosition === store.getState().songsById[store.getState().currentSongId].length - 1) {
+  if (store.getState().songsById[store.getState().currentSongId].arrayPosition === store.getState().songsById[store.getState().currentSongId].songArray.length - 1) {
     store.dispatch({ type: 'RESTART_SONG',
                      currentSongId: store.getState().currentSongId });
   } else {
